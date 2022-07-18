@@ -1,0 +1,35 @@
+
+{%extends 'base.html'%}
+
+{%block title%} Sayı tahmin oyunu. {% endblock%}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Sayı Tahmin</h3>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            <label for="value">Tahmin Girişi:</label>
+            <input type="text" id="value" name="value"><br><br>
+            <input type="hidden" value="{{hak}}" id="hak" name="hak">
+            <input type="hidden" value="{{sayi}}" id="sayi" name="sayi">
+            {% if hak > 0 %}
+            <button type="submit" class="btn btn-danger">Tahmin Et</button>
+            {% endif %}
+        </form>
+
+        <input type="text" value="{{result}}" size="50" id="value" name="value" readonly> <br>
+        <a class="btn btn-success" href="{% url 'game_action' %}">Yeniden Başla</a>
+
+    </div>
+            {% if hak <= 0 %}
+            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_hliaii.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 300px; margin: 0px auto;"  loop autoplay></lottie-player>
+
+        {% endif %}
+    
+</div>
+{% endblock content %}
+
+

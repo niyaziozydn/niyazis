@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%} Giriş Yap {% endblock%}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-danger mt-3 mb-3" value="Giriş Yap " />
+
+
+    </form>
+    
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%} Kayıt Ol {% endblock%}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-danger mt-3 mb-3" value="Kayıt Ol" />
+              {% if messages %}
+      <div class="alert alert-dark" role="alert">
+        {% for message in messages %}
+        {{ message}}
+        {% endfor %}
+      </div>
+       
+      {% endif %}
+    </form>
+    
+{% endblock %}
