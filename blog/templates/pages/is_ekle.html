@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+    {%block title%} is ekle {% endblock%}
+{% block content %}
+
+<form action="{% url 'is_ekle' %}" method="POST">
+    {% csrf_token %}
+        {{ form.media }}
+        {{ form|crispy }}
+    
+    <input type="submit" class="btn btn-danger" value="Gönder" />
+    
+    
+</form>
+
+
+
+{% endblock  %}

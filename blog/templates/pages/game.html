@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+    {%block title%} is ekle {% endblock%}
+{% block content %}
+
+<form action="{% url 'game_action' %}" method="POST">
+    {% csrf_token %}
+    <select name="skills" id="skills" multiple>
+    {% for kate in kategoriler %}
+        <option value={{ kate.id }}>{{ kate.isim }}</option>
+    {% endfor %}
+    </select>    
+    <input type="submit" class="btn btn-danger" value="Gönder" />
+    
+    
+</form>
+
+<table>
+  <tr>
+  {% for skill in user_skill %}
+  <tr>
+    <td>{{skill.skill.isim}}</td>
+    {% endfor %}
+    </tr>
+  </tr>
+</table>
+
+
+
+
+{% endblock  %}

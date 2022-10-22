@@ -3,9 +3,13 @@
 {%block title%} Anasayfa {% endblock%}
 
 {% block content %}
-
+<form action="{% url 'anasayfa' %}" class="d-flex">
+          <input class="form-control me-2"  name="sorgu" type="search" placeholder="İş ilanı arayın" aria-label="Search">
+          <button class="btn btn-outline-danger" type="submit">Arama</button>
+        </form>
 {% for Proje in Projelerim  %}
 
+  
     <div class="card mb-3" >
         <div class="row g-0">
         <div class="col-md-4">
@@ -17,10 +21,22 @@
               <a href="{% url 'detay' slug=Proje.slug %}" style="color:#055D9E;" > {{ Proje.isim }}</a>
 
             </h5>
+            <h5 class="card-title">
+               <a  > {{ Proje.Sirket }}</a>
+
+            </h5>
               <a   > {{ Proje.title }}</a>
+
+
 
             <p class="card-text">{{ Proje.icerik|safe|truncatechars_html:150 }}</p>
             <p class="card-text"><small class="text-muted">{{Proje.düzenlenme_tarihi|timesince }}</small></p>
+               <a   > {{ Proje.title }}</a>
+              {% for Kategori in Proje.kategoriler.all  %}
+                <p>Kategori : {{Kategori}}</p>
+              
+              {% endfor %}
+            
             </div>
         </div>
         </div>

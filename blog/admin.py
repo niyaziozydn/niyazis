@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from blog.models import BanaUlasModeli, ProjelerimModel, SoruModeli, YorumModeli
+from blog.models import BanaUlasModeli, ProjelerimModel, SoruModeli, YorumModeli, KategoriModel, UserSkill
 
 # Register your models here.
 
@@ -20,3 +20,6 @@ class YorumAdmin(admin.ModelAdmin):
 admin.site.register(YorumModeli, YorumAdmin)
 admin.site.register(BanaUlasModeli)
 admin.site.register(ProjelerimModel)
+admin.site.register(KategoriModel)
+
+admin.site.register(UserSkill)

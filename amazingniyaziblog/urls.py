@@ -19,23 +19,27 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from blog.views import anasayfa, game_action, detay, BanaUlas, cikis, sifre_degistir, kayit
+from blog.views import anasayfa, game_action, detay, BanaUlas, cikis,  sifre_degistir, kayit, is_ekle, niyaziskill
 from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',anasayfa,name='anasayfa'),
-    path("game/",game_action,name ='game_action'),
+    path("game/",niyaziskill,name ='game_action'),
     path('detay/<slug:slug>', detay, name='detay'),
     path('iletisim', BanaUlas, name='iletisim'),
     path('cikis', cikis, name='cikis'),
     path('sifre-degistir', sifre_degistir, name='sifre-degistir'),
     path('kayit', kayit, name='kayit'),
+    path('is_ekle', is_ekle, name='is_ekle'),
     path('giris', auth_views.LoginView.as_view(
         template_name = 'pages/giris.html'
     ), name='giris'),
     path('hakkimda', TemplateView.as_view(
         template_name = 'pages/hakkimda.html'
-    ), name='hakkimda')
+    ), name='hakkimda'),
+    path('bilgilendirme', TemplateView.as_view(
+        template_name = 'pages/bilgilendirme.html'
+    ), name='bilgilendirme')
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,20 +2,29 @@
             <div class="card" style="width: 18rem;">
                 
                 <div class="card-body">
-                  <h5 class="card-title">Oyunlar, İletişim ve Giriş  </h5>
+                  <h5 class="card-title">Menü  </h5>
                   {% if request.user.is_authenticated %}
-                  <p class="card-text">Eklemeler yapılacaktır</p>
+            <p class="card-text">Yetenek eklemek için giriş yapınız. İş ilanı eklemek için Kayıt ol kısmında görev durumunu işaretleyiniz.</p>
                     {% else %}
-                    <p class="card-text">Eklemeler yapılacaktır </p>
+                     <p class="card-text">Yetenek eklemek için giriş yapınız. İş ilanı eklemek için Kayıt ol kısmında görev durumunu işaretleyiniz.</p>
                   {%endif%}
 
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"> <a href="{% url 'game_action' %}" style="color:#055D9E;">Sayi tahmin oyunu </a>  </li>
+                  <li class="list-group-item"> <a href="{% url 'game_action' %}" style="color:#055D9E;">Yetenek ekle  </a>  </li>
                   
 
 
                     {% if request.user.is_authenticated %}
+                    {% if request.user.is_staff %}
+                                     <li class="list-group-item"> 
+                    <a href="{%url 'is_ekle'%}" style="color:#055D9E;" >İş İlanı Ekle </a>
+                  </li>
+                    
+                    
+                    {% endif %}
+                     
+
                     <li class="list-group-item"> 
                     <a href="{%url 'sifre-degistir'%}"  style="color:#055D9E;" >Şifre Degistir</a>
                   </li>
@@ -31,12 +40,22 @@
                     <a href="{%url 'giris'%}" style="color:#055D9E;" >Giriş Yap</a>
                   </li>
                   
+ 
+                  
                   <li class="list-group-item"> 
                     <a href="{%url 'kayit'%}" style="color:#055D9E;" >Kayıt Ol</a>
+                  </li>
+                    <li class="list-group-item"> 
+                    <a href="{%url 'bilgilendirme'%}" style="color:#055D9E;" > Bilgilendirme</a>
                   </li>
                   {%endif%}
 
                 </ul>
+               
+ 
+        </form> 
+
 
               </div>
+              
         </div>
