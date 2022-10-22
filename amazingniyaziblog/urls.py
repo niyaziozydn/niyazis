@@ -19,7 +19,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from blog.views import anasayfa, game_action, detay, BanaUlas, cikis,  sifre_degistir, kayit, is_ekle, niyaziskill
+from blog.views import anasayfa,  detay, BanaUlas, cikis,  sifre_degistir, kayit, is_ekle, niyaziskill
 from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -48,41 +48,6 @@ def detay(request, slug):
     })
 
 
-@login_required(login_url='giris')
-def game_action(request):
-    post = request.POST
-    sayi = post.get('sayi')
-    hak = post.get('hak')
-
-    if not sayi:
-        sayi = random.randint(1, 100)
-    else:
-        sayi = int(sayi)
-    if not hak:
-        hak = 5
-    else:
-        hak = int(hak)
-
-    result = ''
-    if post:
-        value = post.get('value')
-        print(value)
-
-        girilen = int(value)
-        hak -= 1
-
-        if girilen > sayi:
-            result = f"Daha düsük bir sayi giriniz. Kalan hakkınız: {hak} "
-
-        elif girilen < sayi:
-            result = f"Daha yüksek bir sayi giriniz. Kalan hakkınız: {hak} "
-        elif girilen == sayi:
-            result = "Tebrikler dogru bildiniz"
-
-        if hak == 0:
-            result = f"hakkınız Bitti. Doğru Cevap: {sayi}"
-
-    return render(request, 'pages   /game.html', context={'result': result, 'hak': hak, 'sayi': sayi})
 
 
 def BanaUlas(request):
